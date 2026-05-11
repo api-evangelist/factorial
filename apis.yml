@@ -1,0 +1,68 @@
+aid: factorial
+name: Factorial
+description: >-
+  Factorial is a Spain-headquartered HRIS and human resources platform offering
+  employee management, time tracking, attendance, time off, payroll,
+  performance, recruitment, documents, and expenses for small and mid-sized
+  businesses. The Factorial Developer API provides versioned REST endpoints
+  (dated like 2026-04-01) for integrating with employees, leaves, contracts,
+  attendance shifts, and other HR resources, with API key and OAuth 2.0
+  authentication and both production and demo environments.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Human Resources
+  - HRIS
+  - Employee Management
+  - Time Tracking
+  - Payroll
+  - Time Off
+  - Performance Management
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/factorial/refs/heads/main/apis.yml
+created: '2026-05-11'
+modified: '2026-05-11'
+specificationVersion: '0.19'
+apis:
+  - aid: factorial:developer-api
+    name: Factorial Developer API
+    description: >-
+      Versioned REST API for managing employees, contracts, leaves, attendance
+      shifts, time off, documents, and other HR resources in Factorial.
+      Supports API key (Bearer token) and OAuth 2.0 authentication, with
+      separate production and demo environments.
+    humanURL: https://apidoc.factorialhr.com
+    baseURL: https://api.factorialhr.com
+    tags:
+      - Human Resources
+      - HRIS
+      - Employees
+      - Attendance
+      - Time Off
+      - Payroll
+    properties:
+      - type: Documentation
+        url: https://apidoc.factorialhr.com
+      - type: Getting Started
+        url: https://apidoc.factorialhr.com/docs/getting-started
+      - type: Authentication
+        url: https://apidoc.factorialhr.com/docs/authentication
+      - type: Environments
+        url: https://apidoc.factorialhr.com/docs/production-and-demo
+
+common:
+  - type: Website
+    url: https://factorialhr.com
+  - type: Documentation
+    url: https://apidoc.factorialhr.com
+  - type: Pricing
+    url: https://factorialhr.com/pricing
+  - type: Sign Up
+    url: https://factorialhr.com/signup
+  - type: Support
+    url: https://help.factorialhr.com
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/factorial-hr
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
