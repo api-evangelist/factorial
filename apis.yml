@@ -43,7 +43,7 @@ apis:
     properties:
       - type: Documentation
         url: https://apidoc.factorialhr.com
-      - type: Getting Started
+      - type: GettingStarted
         url: https://apidoc.factorialhr.com/docs/getting-started
       - type: Authentication
         url: https://apidoc.factorialhr.com/docs/authentication
@@ -57,7 +57,7 @@ common:
     url: https://apidoc.factorialhr.com
   - type: Pricing
     url: https://factorialhr.com/pricing
-  - type: Sign Up
+  - type: SignUp
     url: https://factorialhr.com/signup
   - type: Support
     url: https://help.factorialhr.com
