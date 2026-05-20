@@ -51,6 +51,8 @@ apis:
         url: https://apidoc.factorialhr.com/docs/production-and-demo
 
 common:
+  - type: GitHubOrganization
+    url: https://github.com/factorialco
   - type: Website
     url: https://factorialhr.com
   - type: Documentation
