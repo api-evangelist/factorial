@@ -65,6 +65,8 @@ common:
     url: https://help.factorialhr.com
   - type: LinkedIn
     url: https://www.linkedin.com/company/factorial-hr
+  - type: LLMsTxt
+    url: https://factorialhr.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
