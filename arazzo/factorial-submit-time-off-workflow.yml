@@ -1,0 +1,83 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Submit Time Off
+  summary: Create a time off request and read back its stored status.
+  description: >-
+    Files a leave / time off request for an employee and then fetches the
+    created leave to confirm the dates and current status that Factorial
+    persisted. This is the building block for any absence or vacation
+    integration. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: submit-time-off
+  summary: Create a leave request and confirm its stored status.
+  description: >-
+    Creates a leave for an employee then reads it back to confirm the persisted
+    dates.
+  inputs:
+    type: object
+    required:
+    - employee_id
+    - leave_type_id
+    - start_on
+    - finish_on
+    properties:
+      employee_id:
+        type: integer
+        description: The id of the employee taking time off.
+      leave_type_id:
+        type: integer
+        description: The id of the leave type (vacation, sick, etc.).
+      start_on:
+        type: string
+        description: The first day of the leave (YYYY-MM-DD).
+      finish_on:
+        type: string
+        description: The last day of the leave (YYYY-MM-DD).
+      half_day:
+        type: string
+        description: Optional half-day marker.
+      description:
+        type: string
+        description: An optional note describing the leave.
+  steps:
+  - stepId: createLeaveRequest
+    description: >-
+      File the leave / time off request for the employee.
+    operationId: createLeave
+    requestBody:
+      contentType: application/json
+      payload:
+        employee_id: $inputs.employee_id
+        leave_type_id: $inputs.leave_type_id
+        start_on: $inputs.start_on
+        finish_on: $inputs.finish_on
+        half_day: $inputs.half_day
+        description: $inputs.description
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      leaveId: $response.body#/id
+  - stepId: confirmLeaveStatus
+    description: >-
+      Read the created leave back to confirm the persisted dates and status.
+    operationId: getLeave
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createLeaveRequest.outputs.leaveId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      leaveId: $response.body#/id
+      startOn: $response.body#/start_on
+      finishOn: $response.body#/finish_on
+  outputs:
+    leaveId: $steps.confirmLeaveStatus.outputs.leaveId
+    startOn: $steps.confirmLeaveStatus.outputs.startOn
+    finishOn: $steps.confirmLeaveStatus.outputs.finishOn

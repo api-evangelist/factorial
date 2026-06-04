@@ -1,0 +1,93 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Find Employee and File Leave
+  summary: Look up an employee by email, then file a time off request for the matched employee.
+  description: >-
+    A find-then-act flow. The workflow lists employees and scans the page for
+    one whose email matches the supplied address; when a match is found it files
+    a leave / time off request for that employee, and when no match is found it
+    ends without writing anything. Factorial's employee collection does not
+    expose an email query filter, so the workflow pulls a page and matches on
+    the returned email field. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: find-employee-file-leave
+  summary: Resolve an employee by email and file a leave for them.
+  description: >-
+    Lists employees, branches on whether the supplied email matches, and files
+    a leave for the matched employee.
+  inputs:
+    type: object
+    required:
+    - email
+    - leave_type_id
+    - start_on
+    - finish_on
+    properties:
+      email:
+        type: string
+        description: The email address of the employee to find.
+      leave_type_id:
+        type: integer
+        description: The id of the leave type to file.
+      start_on:
+        type: string
+        description: The first day of the leave (YYYY-MM-DD).
+      finish_on:
+        type: string
+        description: The last day of the leave (YYYY-MM-DD).
+      per_page:
+        type: integer
+        description: How many employees to pull in the lookup page.
+  steps:
+  - stepId: findEmployee
+    description: >-
+      List employees and select the first whose email matches the supplied
+      address. Branches to file the leave when matched, otherwise ends.
+    operationId: listEmployees
+    parameters:
+    - name: per_page
+      in: query
+      value: $inputs.per_page
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedEmployeeId: $response.body#/data/0/id
+    onSuccess:
+    - name: employeeFound
+      type: goto
+      stepId: fileLeave
+      criteria:
+      - context: $response.body
+        condition: $.data[?(@.email == '$inputs.email')]
+        type: jsonpath
+    - name: employeeMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.length == 0
+        type: jsonpath
+  - stepId: fileLeave
+    description: >-
+      File the leave / time off request for the matched employee.
+    operationId: createLeave
+    requestBody:
+      contentType: application/json
+      payload:
+        employee_id: $steps.findEmployee.outputs.matchedEmployeeId
+        leave_type_id: $inputs.leave_type_id
+        start_on: $inputs.start_on
+        finish_on: $inputs.finish_on
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      leaveId: $response.body#/id
+  outputs:
+    matchedEmployeeId: $steps.findEmployee.outputs.matchedEmployeeId
+    leaveId: $steps.fileLeave.outputs.leaveId

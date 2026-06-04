@@ -1,0 +1,119 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Onboard Employee
+  summary: Create an employee, confirm the record, assign teams, and send the Factorial invitation.
+  description: >-
+    The canonical new-hire onboarding flow for Factorial HRIS. The workflow
+    creates the employee record, fetches it back to confirm the assigned id and
+    profile, assigns the new hire to one or more teams (Factorial has no
+    standalone teams resource, so team membership is written through the
+    employee record's team_ids field), and finally sends the platform
+    invitation so the employee can log in. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: onboard-employee
+  summary: Create a Factorial employee, assign teams, and invite them.
+  description: >-
+    Creates the employee, reads it back, writes the team assignments onto the
+    employee record, and sends the login invitation.
+  inputs:
+    type: object
+    required:
+    - first_name
+    - last_name
+    - email
+    properties:
+      first_name:
+        type: string
+        description: The new hire's first name.
+      last_name:
+        type: string
+        description: The new hire's last name.
+      email:
+        type: string
+        description: The new hire's work email address.
+      start_date:
+        type: string
+        description: The employment start date (YYYY-MM-DD).
+      job_title:
+        type: string
+        description: The job title for the new hire.
+      manager_id:
+        type: integer
+        description: The id of the employee's manager.
+      team_ids:
+        type: array
+        description: The team ids the new hire should belong to.
+        items:
+          type: integer
+  steps:
+  - stepId: createEmployeeRecord
+    description: >-
+      Create the employee record from the supplied profile fields.
+    operationId: createEmployee
+    requestBody:
+      contentType: application/json
+      payload:
+        first_name: $inputs.first_name
+        last_name: $inputs.last_name
+        email: $inputs.email
+        start_date: $inputs.start_date
+        job_title: $inputs.job_title
+        manager_id: $inputs.manager_id
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      employeeId: $response.body#/id
+  - stepId: confirmEmployee
+    description: >-
+      Read the newly created employee back to confirm its id and stored
+      profile before assigning teams.
+    operationId: getEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createEmployeeRecord.outputs.employeeId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $response.body#/id
+      employeeEmail: $response.body#/email
+  - stepId: assignTeams
+    description: >-
+      Assign the new hire to the requested teams by writing the team_ids onto
+      the employee record (Factorial exposes team membership through the
+      employee resource rather than a dedicated teams endpoint).
+    operationId: updateEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $steps.confirmEmployee.outputs.employeeId
+    requestBody:
+      contentType: application/json
+      payload:
+        team_ids: $inputs.team_ids
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $steps.confirmEmployee.outputs.employeeId
+  - stepId: inviteEmployee
+    description: >-
+      Send the Factorial platform invitation so the new hire can sign in.
+    operationId: inviteEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $steps.confirmEmployee.outputs.employeeId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      invitedEmployeeId: $steps.confirmEmployee.outputs.employeeId
+  outputs:
+    employeeId: $steps.confirmEmployee.outputs.employeeId
+    invitedEmployeeId: $steps.inviteEmployee.outputs.invitedEmployeeId

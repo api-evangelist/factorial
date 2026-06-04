@@ -51,6 +51,45 @@ apis:
         url: https://apidoc.factorialhr.com/docs/production-and-demo
 
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/factorial-add-payroll-supplement-workflow.yml
+      name: Factorial Add Payroll Supplement
+      summary: Confirm an employee, add a payroll supplement for them, and list supplements to confirm.
+    - url: arazzo/factorial-amend-contract-workflow.yml
+      name: Factorial Amend Contract
+      summary: Find an existing contract version and update it, otherwise create a new one.
+    - url: arazzo/factorial-attendance-day-workflow.yml
+      name: Factorial Attendance Day
+      summary: Clock an employee in, confirm the open shift, then clock them out.
+    - url: arazzo/factorial-create-contract-workflow.yml
+      name: Factorial Create Contract Version
+      summary: Confirm an employee exists, create a contract version for them, and read it back.
+    - url: arazzo/factorial-find-employee-file-leave-workflow.yml
+      name: Factorial Find Employee and File Leave
+      summary: Look up an employee by email, then file a time off request for the matched employee.
+    - url: arazzo/factorial-log-attendance-shift-workflow.yml
+      name: Factorial Log Attendance Shift
+      summary: Confirm an employee, log a completed attendance shift, and read it back.
+    - url: arazzo/factorial-offboard-employee-workflow.yml
+      name: Factorial Offboard Employee
+      summary: Confirm an employee, terminate them, and verify the termination was recorded.
+    - url: arazzo/factorial-onboard-employee-workflow.yml
+      name: Factorial Onboard Employee
+      summary: Create an employee, confirm the record, assign teams, and send the Factorial invitation.
+    - url: arazzo/factorial-reschedule-time-off-workflow.yml
+      name: Factorial Reschedule Time Off
+      summary: Find an employee's existing leave, reschedule it, and confirm the new dates.
+    - url: arazzo/factorial-submit-time-off-workflow.yml
+      name: Factorial Submit Time Off
+      summary: Create a time off request and read back its stored status.
+    - url: arazzo/factorial-update-employee-profile-workflow.yml
+      name: Factorial Update Employee Profile
+      summary: Confirm an employee, update their profile fields, and read the record back.
+    - url: arazzo/factorial-upload-employee-document-workflow.yml
+      name: Factorial Upload Employee Document
+      summary: Confirm an employee, upload a document for them, and confirm it appears in their documents.
   - type: GitHubOrganization
     url: https://github.com/factorialco
   - type: Website

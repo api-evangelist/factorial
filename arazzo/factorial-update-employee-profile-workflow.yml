@@ -1,0 +1,90 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Update Employee Profile
+  summary: Confirm an employee, update their profile fields, and read the record back.
+  description: >-
+    Applies profile changes to an existing employee. The workflow confirms the
+    employee exists, patches the supplied profile fields (job title, manager,
+    teams, etc.), and reads the employee back to confirm the stored values. This
+    is the building block for org-chart, reporting-line, and HR profile sync
+    integrations. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-employee-profile
+  summary: Update an employee's profile fields and confirm the change.
+  description: >-
+    Confirms the employee, updates the supplied fields, and reads the record
+    back.
+  inputs:
+    type: object
+    required:
+    - employee_id
+    properties:
+      employee_id:
+        type: integer
+        description: The id of the employee to update.
+      job_title:
+        type: string
+        description: The new job title.
+      manager_id:
+        type: integer
+        description: The id of the new manager.
+      team_ids:
+        type: array
+        description: The team ids the employee should belong to.
+        items:
+          type: integer
+  steps:
+  - stepId: confirmEmployee
+    description: >-
+      Confirm the target employee exists before updating their profile.
+    operationId: getEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.employee_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $response.body#/id
+  - stepId: updateProfile
+    description: >-
+      Patch the employee with the supplied profile fields.
+    operationId: updateEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $steps.confirmEmployee.outputs.employeeId
+    requestBody:
+      contentType: application/json
+      payload:
+        job_title: $inputs.job_title
+        manager_id: $inputs.manager_id
+        team_ids: $inputs.team_ids
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $steps.confirmEmployee.outputs.employeeId
+  - stepId: confirmProfile
+    description: >-
+      Read the employee back to confirm the stored profile values.
+    operationId: getEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $steps.confirmEmployee.outputs.employeeId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $response.body#/id
+      jobTitle: $response.body#/job_title
+      managerId: $response.body#/manager_id
+  outputs:
+    employeeId: $steps.confirmProfile.outputs.employeeId
+    jobTitle: $steps.confirmProfile.outputs.jobTitle
+    managerId: $steps.confirmProfile.outputs.managerId

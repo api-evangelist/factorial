@@ -1,0 +1,76 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Create Contract Version
+  summary: Confirm an employee exists, create a contract version for them, and read it back.
+  description: >-
+    Adds a new contract version for an existing employee. The workflow first
+    confirms the employee exists, then creates the contract version, and finally
+    reads the created contract version back to confirm the persisted terms. This
+    underpins any hiring, promotion, or compensation-change integration. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-contract-version
+  summary: Create a contract version for an existing employee and confirm it.
+  description: >-
+    Confirms the employee, creates a contract version, and reads it back.
+  inputs:
+    type: object
+    required:
+    - employee_id
+    - contract
+    properties:
+      employee_id:
+        type: integer
+        description: The id of the employee the contract version belongs to.
+      contract:
+        type: object
+        description: >-
+          The contract version body (effective dates, working hours, salary,
+          contract type, etc.) as accepted by Factorial.
+  steps:
+  - stepId: confirmEmployee
+    description: >-
+      Confirm the target employee exists before creating a contract version.
+    operationId: getEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.employee_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $response.body#/id
+  - stepId: createContract
+    description: >-
+      Create the contract version for the employee using the supplied terms.
+    operationId: createContractVersion
+    requestBody:
+      contentType: application/json
+      payload:
+        employee_id: $steps.confirmEmployee.outputs.employeeId
+        contract: $inputs.contract
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      contractVersionId: $response.body#/id
+  - stepId: confirmContract
+    description: >-
+      Read the created contract version back to confirm its persisted terms.
+    operationId: getContractVersion
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createContract.outputs.contractVersionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      contractVersionId: $response.body#/id
+  outputs:
+    employeeId: $steps.confirmEmployee.outputs.employeeId
+    contractVersionId: $steps.confirmContract.outputs.contractVersionId

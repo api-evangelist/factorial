@@ -1,0 +1,90 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Log Attendance Shift
+  summary: Confirm an employee, log a completed attendance shift, and read it back.
+  description: >-
+    Records a completed attendance shift (with explicit clock-in and clock-out
+    times) for an employee, rather than live clocking. The workflow confirms the
+    employee exists, creates the shift, and reads it back to confirm the stored
+    times. This is the building block for back-office time corrections and
+    bulk-import integrations. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: log-attendance-shift
+  summary: Log a completed attendance shift for an employee and confirm it.
+  description: >-
+    Confirms the employee, creates a shift with explicit times, and reads it
+    back.
+  inputs:
+    type: object
+    required:
+    - employee_id
+    - clock_in
+    - clock_out
+    properties:
+      employee_id:
+        type: integer
+        description: The id of the employee the shift belongs to.
+      clock_in:
+        type: string
+        description: The shift clock-in timestamp (ISO 8601 date-time).
+      clock_out:
+        type: string
+        description: The shift clock-out timestamp (ISO 8601 date-time).
+      observations:
+        type: string
+        description: An optional note about the shift.
+      location_type:
+        type: string
+        description: The optional location type for the shift.
+  steps:
+  - stepId: confirmEmployee
+    description: >-
+      Confirm the target employee exists before logging a shift.
+    operationId: getEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.employee_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $response.body#/id
+  - stepId: createShift
+    description: >-
+      Create the attendance shift with the supplied clock-in and clock-out
+      times.
+    operationId: createShift
+    requestBody:
+      contentType: application/json
+      payload:
+        employee_id: $steps.confirmEmployee.outputs.employeeId
+        clock_in: $inputs.clock_in
+        clock_out: $inputs.clock_out
+        observations: $inputs.observations
+        location_type: $inputs.location_type
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      shiftId: $response.body#/id
+  - stepId: confirmShift
+    description: >-
+      Read the created shift back to confirm its stored times.
+    operationId: getShift
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createShift.outputs.shiftId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      shiftId: $response.body#/id
+  outputs:
+    employeeId: $steps.confirmEmployee.outputs.employeeId
+    shiftId: $steps.confirmShift.outputs.shiftId

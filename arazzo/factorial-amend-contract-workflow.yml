@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Amend Contract
+  summary: Find an existing contract version and update it, otherwise create a new one.
+  description: >-
+    A find-then-act flow for contracts. The workflow lists contract versions,
+    branches on whether any exist, and then either updates the most recent
+    contract version with the supplied changes or creates a brand new contract
+    version when none exists. This is the building block for promotion, salary
+    change, and contract renewal integrations. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: amend-contract
+  summary: Update the latest contract version or create one if none exists.
+  description: >-
+    Lists contract versions, branches on existence, and updates or creates a
+    contract version.
+  inputs:
+    type: object
+    required:
+    - contract
+    properties:
+      contract:
+        type: object
+        description: >-
+          The contract version body (effective dates, working hours, salary,
+          contract type) as accepted by Factorial.
+  steps:
+  - stepId: findContract
+    description: >-
+      List contract versions and branch on whether any exist. Updates the most
+      recent when found, otherwise creates a new one.
+    operationId: listContractVersions
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      contractVersionId: $response.body#/data/0/id
+    onSuccess:
+    - name: contractExists
+      type: goto
+      stepId: updateContract
+      criteria:
+      - context: $response.body
+        condition: $.data.length > 0
+        type: jsonpath
+    - name: contractMissing
+      type: goto
+      stepId: createContract
+      criteria:
+      - context: $response.body
+        condition: $.data.length == 0
+        type: jsonpath
+  - stepId: updateContract
+    description: >-
+      Update the most recent contract version with the supplied changes.
+    operationId: updateContractVersion
+    parameters:
+    - name: id
+      in: path
+      value: $steps.findContract.outputs.contractVersionId
+    requestBody:
+      contentType: application/json
+      payload:
+        contract: $inputs.contract
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      contractVersionId: $steps.findContract.outputs.contractVersionId
+    onSuccess:
+    - name: done
+      type: end
+  - stepId: createContract
+    description: >-
+      Create a new contract version when no existing version was found.
+    operationId: createContractVersion
+    requestBody:
+      contentType: application/json
+      payload:
+        contract: $inputs.contract
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      contractVersionId: $response.body#/id
+  outputs:
+    updatedContractVersionId: $steps.updateContract.outputs.contractVersionId
+    createdContractVersionId: $steps.createContract.outputs.contractVersionId

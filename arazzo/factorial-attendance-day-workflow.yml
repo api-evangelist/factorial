@@ -1,0 +1,95 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Attendance Day
+  summary: Clock an employee in, confirm the open shift, then clock them out.
+  description: >-
+    Runs a full attendance day for an employee: it clocks the employee in,
+    lists their shifts for the day to confirm an open shift was opened, and
+    then clocks the employee out to close the day. This is the core building
+    block for any time-tracking or kiosk integration. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: attendance-day
+  summary: Clock in, confirm the open shift, and clock out for an employee.
+  description: >-
+    Opens an attendance shift via clock in, lists shifts to confirm it is open,
+    and closes it via clock out.
+  inputs:
+    type: object
+    required:
+    - employee_id
+    - clock_in_at
+    - clock_out_at
+    - day
+    properties:
+      employee_id:
+        type: integer
+        description: The id of the employee clocking in and out.
+      clock_in_at:
+        type: string
+        description: The clock-in timestamp (ISO 8601 date-time).
+      clock_out_at:
+        type: string
+        description: The clock-out timestamp (ISO 8601 date-time).
+      day:
+        type: string
+        description: The attendance day to query shifts for (YYYY-MM-DD).
+      location_type:
+        type: string
+        description: Optional location type for the clock-in (e.g. office, remote).
+  steps:
+  - stepId: clockInEmployee
+    description: >-
+      Clock the employee in, opening an attendance shift.
+    operationId: clockIn
+    requestBody:
+      contentType: application/json
+      payload:
+        employee_id: $inputs.employee_id
+        now: $inputs.clock_in_at
+        location_type: $inputs.location_type
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $inputs.employee_id
+  - stepId: confirmOpenShift
+    description: >-
+      List the employee's shifts for the day to confirm an open shift exists
+      before clocking out.
+    operationId: listShifts
+    parameters:
+    - name: employee_id
+      in: query
+      value: $inputs.employee_id
+    - name: start_on
+      in: query
+      value: $inputs.day
+    - name: end_on
+      in: query
+      value: $inputs.day
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      shiftId: $response.body#/data/0/id
+  - stepId: clockOutEmployee
+    description: >-
+      Clock the employee out, closing the open attendance shift.
+    operationId: clockOut
+    requestBody:
+      contentType: application/json
+      payload:
+        employee_id: $inputs.employee_id
+        now: $inputs.clock_out_at
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $inputs.employee_id
+  outputs:
+    employeeId: $steps.clockOutEmployee.outputs.employeeId
+    shiftId: $steps.confirmOpenShift.outputs.shiftId

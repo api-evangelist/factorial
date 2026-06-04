@@ -1,0 +1,80 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Offboard Employee
+  summary: Confirm an employee, terminate them, and verify the termination was recorded.
+  description: >-
+    The offboarding counterpart to onboarding. The workflow confirms the
+    employee exists, submits the termination with a date and reason, and reads
+    the employee back to verify the termination was recorded. This is the
+    building block for any leaver or HR offboarding integration. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: offboard-employee
+  summary: Terminate an existing employee and verify it.
+  description: >-
+    Confirms the employee, terminates them, and reads the record back.
+  inputs:
+    type: object
+    required:
+    - employee_id
+    - termination_date
+    properties:
+      employee_id:
+        type: integer
+        description: The id of the employee to terminate.
+      termination_date:
+        type: string
+        description: The termination date (YYYY-MM-DD).
+      termination_reason:
+        type: string
+        description: The reason for termination.
+  steps:
+  - stepId: confirmEmployee
+    description: >-
+      Confirm the target employee exists before terminating.
+    operationId: getEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.employee_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $response.body#/id
+  - stepId: terminateEmployee
+    description: >-
+      Submit the termination with the supplied date and reason.
+    operationId: terminateEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $steps.confirmEmployee.outputs.employeeId
+    requestBody:
+      contentType: application/json
+      payload:
+        termination_date: $inputs.termination_date
+        termination_reason: $inputs.termination_reason
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $steps.confirmEmployee.outputs.employeeId
+  - stepId: verifyTermination
+    description: >-
+      Read the employee back to verify the termination was recorded.
+    operationId: getEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $steps.confirmEmployee.outputs.employeeId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $response.body#/id
+  outputs:
+    employeeId: $steps.verifyTermination.outputs.employeeId

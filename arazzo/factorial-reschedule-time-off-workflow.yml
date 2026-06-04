@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Reschedule Time Off
+  summary: Find an employee's existing leave, reschedule it, and confirm the new dates.
+  description: >-
+    A find-then-act flow for time off. The workflow lists an employee's leaves
+    in a window, branches on whether a leave was found, updates the matched
+    leave with new dates, and reads it back to confirm the reschedule. This is
+    the building block for any absence-change or vacation-amendment integration.
+    Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: reschedule-time-off
+  summary: Find an employee's leave and reschedule it to new dates.
+  description: >-
+    Lists leaves, branches on existence, updates the matched leave, and confirms
+    the new dates.
+  inputs:
+    type: object
+    required:
+    - employee_id
+    - from
+    - to
+    - new_start_on
+    - new_finish_on
+    properties:
+      employee_id:
+        type: integer
+        description: The id of the employee whose leave is being rescheduled.
+      from:
+        type: string
+        description: The start of the window to search leaves in (YYYY-MM-DD).
+      to:
+        type: string
+        description: The end of the window to search leaves in (YYYY-MM-DD).
+      new_start_on:
+        type: string
+        description: The new first day of the leave (YYYY-MM-DD).
+      new_finish_on:
+        type: string
+        description: The new last day of the leave (YYYY-MM-DD).
+  steps:
+  - stepId: findLeave
+    description: >-
+      List the employee's leaves in the window and branch on whether one was
+      found before rescheduling.
+    operationId: listLeaves
+    parameters:
+    - name: employee_id
+      in: query
+      value: $inputs.employee_id
+    - name: from
+      in: query
+      value: $inputs.from
+    - name: to
+      in: query
+      value: $inputs.to
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      leaveId: $response.body#/data/0/id
+    onSuccess:
+    - name: leaveFound
+      type: goto
+      stepId: rescheduleLeave
+      criteria:
+      - context: $response.body
+        condition: $.data.length > 0
+        type: jsonpath
+    - name: leaveMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.data.length == 0
+        type: jsonpath
+  - stepId: rescheduleLeave
+    description: >-
+      Update the matched leave with the new start and finish dates.
+    operationId: updateLeave
+    parameters:
+    - name: id
+      in: path
+      value: $steps.findLeave.outputs.leaveId
+    requestBody:
+      contentType: application/json
+      payload:
+        start_on: $inputs.new_start_on
+        finish_on: $inputs.new_finish_on
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      leaveId: $steps.findLeave.outputs.leaveId
+  - stepId: confirmLeave
+    description: >-
+      Read the leave back to confirm the rescheduled dates.
+    operationId: getLeave
+    parameters:
+    - name: id
+      in: path
+      value: $steps.rescheduleLeave.outputs.leaveId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      leaveId: $response.body#/id
+      startOn: $response.body#/start_on
+      finishOn: $response.body#/finish_on
+  outputs:
+    leaveId: $steps.confirmLeave.outputs.leaveId
+    startOn: $steps.confirmLeave.outputs.startOn
+    finishOn: $steps.confirmLeave.outputs.finishOn

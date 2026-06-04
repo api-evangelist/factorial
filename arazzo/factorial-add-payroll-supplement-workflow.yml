@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Factorial Add Payroll Supplement
+  summary: Confirm an employee, add a payroll supplement for them, and list supplements to confirm.
+  description: >-
+    Adds a one-off payroll supplement (bonus, allowance, deduction) for an
+    employee. The workflow confirms the employee exists, creates the supplement,
+    and lists supplements to confirm it was recorded. This is the building block
+    for any variable-pay or payroll-adjustment integration. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: factorialApi
+  url: ../openapi/factorial-openapi.yml
+  type: openapi
+workflows:
+- workflowId: add-payroll-supplement
+  summary: Add a payroll supplement for an employee and confirm it.
+  description: >-
+    Confirms the employee, creates the supplement, and lists supplements.
+  inputs:
+    type: object
+    required:
+    - employee_id
+    - supplement
+    properties:
+      employee_id:
+        type: integer
+        description: The id of the employee the supplement applies to.
+      supplement:
+        type: object
+        description: >-
+          The supplement body (amount, type, payment date, description) as
+          accepted by Factorial payroll.
+  steps:
+  - stepId: confirmEmployee
+    description: >-
+      Confirm the target employee exists before adding a supplement.
+    operationId: getEmployee
+    parameters:
+    - name: id
+      in: path
+      value: $inputs.employee_id
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      employeeId: $response.body#/id
+  - stepId: createSupplement
+    description: >-
+      Create the payroll supplement for the employee.
+    operationId: createSupplement
+    requestBody:
+      contentType: application/json
+      payload:
+        employee_id: $steps.confirmEmployee.outputs.employeeId
+        supplement: $inputs.supplement
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      supplementId: $response.body#/id
+  - stepId: confirmSupplements
+    description: >-
+      List payroll supplements to confirm the new supplement was recorded.
+    operationId: listSupplements
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      supplements: $response.body#/data
+  outputs:
+    employeeId: $steps.confirmEmployee.outputs.employeeId
+    supplementId: $steps.createSupplement.outputs.supplementId
+    supplements: $steps.confirmSupplements.outputs.supplements
