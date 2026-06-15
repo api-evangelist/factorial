@@ -1,0 +1,2828 @@
+{
+  "item": [
+    {
+      "id": "672a9da6-fbdd-4f13-a620-bbf4d43171e6",
+      "name": "List employees",
+      "request": {
+        "name": "List employees",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "employees",
+            "employees"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "disabled": false,
+              "key": "per_page",
+              "value": "50"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "8ea6c012-87e7-40ae-ad14-88dc302396d5",
+          "name": "Employee collection",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "employees",
+                "employees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "per_page",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": [\n    {\n      \"id\": 1544,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"email\": \"d9AMOVVNaJq73@lyPjVHnEiTeJgF.cbd\",\n      \"birthday_on\": \"2014-01-09\",\n      \"start_date\": \"2015-04-19\",\n      \"job_title\": \"string\",\n      \"manager_id\": 9314,\n      \"team_ids\": [\n        6794,\n        882\n      ]\n    },\n    {\n      \"id\": 6355,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"email\": \"YEWGHLOZYZcwfRV@DXBuGnQcUFqLiB.bo\",\n      \"birthday_on\": \"2015-09-10\",\n      \"start_date\": \"1994-10-10\",\n      \"job_title\": \"string\",\n      \"manager_id\": 4038,\n      \"team_ids\": [\n        5054,\n        7402\n      ]\n    }\n  ],\n  \"meta\": {\n    \"page\": 3288,\n    \"per_page\": 8494,\n    \"total\": 2220\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e0f10769-70a3-4720-b67b-1aa55a13ddf2",
+      "name": "Create an employee",
+      "request": {
+        "name": "Create an employee",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "employees",
+            "employees"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"birthday_on\": \"<date>\",\n  \"start_date\": \"<date>\",\n  \"job_title\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"team_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "d7d87c47-929f-4951-8fc9-20c53565a547",
+          "name": "Employee created",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "employees",
+                "employees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"birthday_on\": \"<date>\",\n  \"start_date\": \"<date>\",\n  \"job_title\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"team_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "46fa64b6-a229-4fe2-8b4f-928f47612c88",
+      "name": "Get an employee",
+      "request": {
+        "name": "Get an employee",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "employees",
+            "employees",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "90c37fe6-d8e3-4f12-b854-289fb5504c41",
+          "name": "Employee",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "employees",
+                "employees",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 9496,\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"pt62kI3@TfUMefKKqMCmkI.uf\",\n  \"birthday_on\": \"1992-03-23\",\n  \"start_date\": \"1998-06-03\",\n  \"job_title\": \"string\",\n  \"manager_id\": 9857,\n  \"team_ids\": [\n    6247,\n    3095\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e0ef635e-a813-4bb0-9f9a-46f5c03523a1",
+      "name": "Update an employee",
+      "request": {
+        "name": "Update an employee",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "employees",
+            "employees",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"birthday_on\": \"<date>\",\n  \"start_date\": \"<date>\",\n  \"job_title\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"team_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "b23858fe-c401-4989-9080-1333b8b7ac17",
+          "name": "Updated",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "employees",
+                "employees",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"birthday_on\": \"<date>\",\n  \"start_date\": \"<date>\",\n  \"job_title\": \"<string>\",\n  \"manager_id\": \"<integer>\",\n  \"team_ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "8308a4cb-aa6c-4342-ac4e-fb8d1f4e86c5",
+      "name": "Invite an employee to Factorial",
+      "request": {
+        "name": "Invite an employee to Factorial",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "employees",
+            "employees",
+            ":id",
+            "invite"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "faaebc00-b504-423b-b107-d80560f4e6b5",
+          "name": "Invitation sent",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "employees",
+                "employees",
+                ":id",
+                "invite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "1a3a9bf3-75a3-4d92-b2a5-17a27ec76534",
+      "name": "Terminate an employee",
+      "request": {
+        "name": "Terminate an employee",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "employees",
+            "employees",
+            ":id",
+            "terminate"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"termination_date\": \"<date>\",\n  \"termination_reason\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "566d9b26-216d-4895-94fa-b6f6ed4dd187",
+          "name": "Terminated",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "employees",
+                "employees",
+                ":id",
+                "terminate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"termination_date\": \"<date>\",\n  \"termination_reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c446b5a4-24de-44b6-a687-be9daca63c27",
+      "name": "List contract versions",
+      "request": {
+        "name": "List contract versions",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "contracts",
+            "contract_versions"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "06127cd0-7e56-4524-9880-17dbcc0b2ed1",
+          "name": "Contract versions",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "contracts",
+                "contract_versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b97268a5-5e7c-4e9f-8b7c-eac492bc3f6f",
+      "name": "Create a contract version",
+      "request": {
+        "name": "Create a contract version",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "contracts",
+            "contract_versions"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "22daaee7-c7ec-4324-8f82-1fcf309c6412",
+          "name": "Created",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "contracts",
+                "contract_versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "73893504-03fe-4e55-9de5-c7371ace726e",
+      "name": "Get a contract version",
+      "request": {
+        "name": "Get a contract version",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "contracts",
+            "contract_versions",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "0261252e-28ea-44b0-b10a-30ff06d26dff",
+          "name": "Contract version",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "contracts",
+                "contract_versions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c67e09be-98d4-48af-afc6-d220c80f0500",
+      "name": "Update a contract version",
+      "request": {
+        "name": "Update a contract version",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "contracts",
+            "contract_versions",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "b4bbf923-ff54-4f83-8a81-f95a93847c83",
+          "name": "Updated",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "contracts",
+                "contract_versions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "203483b7-4760-48b7-bcb8-26f77093a21e",
+      "name": "Delete a contract version",
+      "request": {
+        "name": "Delete a contract version",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "contracts",
+            "contract_versions",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "d9a2836b-d094-41e5-a969-1b5dd21f2974",
+          "name": "Deleted",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "contracts",
+                "contract_versions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "71d280ca-3eec-46ab-9280-ba770fcca425",
+      "name": "List attendance shifts",
+      "request": {
+        "name": "List attendance shifts",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "attendance",
+            "shifts"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "employee_id",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "start_on",
+              "value": "<date>"
+            },
+            {
+              "disabled": false,
+              "key": "end_on",
+              "value": "<date>"
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "bae04d51-bddc-4ed7-b4e5-4063b4ecdb1d",
+          "name": "Shifts collection",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "attendance",
+                "shifts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "employee_id",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "start_on",
+                  "value": "<date>"
+                },
+                {
+                  "key": "end_on",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d4735756-a437-44da-9c3c-a9c1187c78c2",
+      "name": "Create an attendance shift (clock in)",
+      "request": {
+        "name": "Create an attendance shift (clock in)",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "attendance",
+            "shifts"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"clock_in\": \"<dateTime>\",\n  \"clock_out\": \"<dateTime>\",\n  \"observations\": \"<string>\",\n  \"location_type\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "039973b7-af66-4190-806a-81fc5c69140e",
+          "name": "Shift created",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "attendance",
+                "shifts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"clock_in\": \"<dateTime>\",\n  \"clock_out\": \"<dateTime>\",\n  \"observations\": \"<string>\",\n  \"location_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9de037ed-8016-44a1-b677-9c9d3f949712",
+      "name": "Get an attendance shift",
+      "request": {
+        "name": "Get an attendance shift",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "attendance",
+            "shifts",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "4e9275a5-7853-4c2d-8079-cef3f017dc9b",
+          "name": "Shift",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "attendance",
+                "shifts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "8759d3b2-e882-45d0-8b2f-7e266287524a",
+      "name": "Update an attendance shift",
+      "request": {
+        "name": "Update an attendance shift",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "attendance",
+            "shifts",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"clock_in\": \"<dateTime>\",\n  \"clock_out\": \"<dateTime>\",\n  \"observations\": \"<string>\",\n  \"location_type\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "8ce2e053-60f1-4293-a0b6-e3f497826e6b",
+          "name": "Updated",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "attendance",
+                "shifts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"clock_in\": \"<dateTime>\",\n  \"clock_out\": \"<dateTime>\",\n  \"observations\": \"<string>\",\n  \"location_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "aa342ead-39d3-4bb3-ac28-2b3de65fdcf9",
+      "name": "Delete an attendance shift",
+      "request": {
+        "name": "Delete an attendance shift",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "attendance",
+            "shifts",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "daba85d7-7598-416e-80fa-ed7c1c42aaf2",
+          "name": "Deleted",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "attendance",
+                "shifts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "06525726-d6ad-4c3e-aebb-1a20281caeaf",
+      "name": "Clock in",
+      "request": {
+        "name": "Clock in",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "attendance",
+            "shifts",
+            "clock_in"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employee_id\": \"<integer>\",\n  \"now\": \"<dateTime>\",\n  \"location_type\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "2c18e3dd-71d7-45c8-b716-2408300a044c",
+          "name": "Clocked in",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "attendance",
+                "shifts",
+                "clock_in"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"employee_id\": \"<integer>\",\n  \"now\": \"<dateTime>\",\n  \"location_type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b96aa137-68da-45a6-9d79-c68a8579bcaf",
+      "name": "Clock out",
+      "request": {
+        "name": "Clock out",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "attendance",
+            "shifts",
+            "clock_out"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employee_id\": \"<integer>\",\n  \"now\": \"<dateTime>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "b5688686-02d0-4c4c-bda3-ff93c7e31081",
+          "name": "Clocked out",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "attendance",
+                "shifts",
+                "clock_out"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"employee_id\": \"<integer>\",\n  \"now\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b2e7bfb8-fc74-4cb5-9f85-5cf61c9e787c",
+      "name": "List leaves / time off requests",
+      "request": {
+        "name": "List leaves / time off requests",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "time_off",
+            "leaves"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "employee_id",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "from",
+              "value": "<date>"
+            },
+            {
+              "disabled": false,
+              "key": "to",
+              "value": "<date>"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "11c5743c-6571-4cec-8f13-273cc77c5a63",
+          "name": "Leaves collection",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "time_off",
+                "leaves"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "employee_id",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "from",
+                  "value": "<date>"
+                },
+                {
+                  "key": "to",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": [\n    {\n      \"id\": 1389,\n      \"employee_id\": 4482,\n      \"leave_type_id\": 3910,\n      \"start_on\": \"1972-09-26\",\n      \"finish_on\": \"1958-05-10\",\n      \"half_day\": \"beginning_of_day\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": 1282,\n      \"employee_id\": 6504,\n      \"leave_type_id\": 5519,\n      \"start_on\": \"1982-09-02\",\n      \"finish_on\": \"1947-06-15\",\n      \"half_day\": \"beginning_of_day\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d24f6355-ae89-4aad-b738-5399a40ea033",
+      "name": "Create a leave / time off request",
+      "request": {
+        "name": "Create a leave / time off request",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "time_off",
+            "leaves"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"leave_type_id\": \"<integer>\",\n  \"start_on\": \"<date>\",\n  \"finish_on\": \"<date>\",\n  \"half_day\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "15a63bac-6c4f-4f79-94f2-104f67242939",
+          "name": "Leave created",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "time_off",
+                "leaves"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"leave_type_id\": \"<integer>\",\n  \"start_on\": \"<date>\",\n  \"finish_on\": \"<date>\",\n  \"half_day\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "934c2ed4-cc60-45b6-a2e7-6ac78756143e",
+      "name": "Get a leave",
+      "request": {
+        "name": "Get a leave",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "time_off",
+            "leaves",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "6ab531a8-3281-40ae-bcbd-e7f1bee6ef67",
+          "name": "Leave",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "time_off",
+                "leaves",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "0fa1b433-5145-45b5-8a20-32f1c3d23e4a",
+      "name": "Update a leave",
+      "request": {
+        "name": "Update a leave",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "time_off",
+            "leaves",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"leave_type_id\": \"<integer>\",\n  \"start_on\": \"<date>\",\n  \"finish_on\": \"<date>\",\n  \"half_day\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "5a8dcea9-713a-4958-ab8f-fd46970d2938",
+          "name": "Updated",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "time_off",
+                "leaves",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"employee_id\": \"<integer>\",\n  \"leave_type_id\": \"<integer>\",\n  \"start_on\": \"<date>\",\n  \"finish_on\": \"<date>\",\n  \"half_day\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "f72f0857-0243-4ab6-9b18-c65a0a30fdc8",
+      "name": "Delete a leave",
+      "request": {
+        "name": "Delete a leave",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "time_off",
+            "leaves",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "8d464638-c68c-4a4f-95a2-f57073ddb036",
+          "name": "Deleted",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "time_off",
+                "leaves",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "cede3b8e-a5e6-47e5-b884-b2510c5e0318",
+      "name": "List payroll supplements",
+      "request": {
+        "name": "List payroll supplements",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "payroll",
+            "supplements"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "869695fc-1ff7-4f8a-8545-ff957a3d6deb",
+          "name": "Supplements",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "payroll",
+                "supplements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "14135f80-479a-46ca-ac8b-dd4118341231",
+      "name": "Create a payroll supplement",
+      "request": {
+        "name": "Create a payroll supplement",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "payroll",
+            "supplements"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "152630b0-e65c-42be-9936-5be5e256b7b0",
+          "name": "Created",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "payroll",
+                "supplements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "147d2839-060c-4281-bf17-35ee138d46b0",
+      "name": "List company locations",
+      "request": {
+        "name": "List company locations",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "companies",
+            "locations"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "28d93ab3-f03a-4150-b2eb-b9c39c47cf28",
+          "name": "Locations",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "companies",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "4271d369-a1bf-4f19-8fb8-aaf1c5af047b",
+      "name": "Create a company location",
+      "request": {
+        "name": "Create a company location",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "companies",
+            "locations"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "<object>",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "001c632d-88e4-47e8-a5dc-0d78a465bb90",
+          "name": "Created",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "companies",
+                "locations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "bc5e4113-2124-4f64-bb74-6036ef8709f7",
+      "name": "List employee updates (new hires, terminations, contract changes, absences)",
+      "request": {
+        "name": "List employee updates (new hires, terminations, contract changes, absences)",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "employees",
+            "employee_updates"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "from",
+              "value": "<date>"
+            },
+            {
+              "disabled": false,
+              "key": "to",
+              "value": "<date>"
+            }
+          ],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "8d213ca8-4232-4d96-9549-0b28915b64dd",
+          "name": "Updates",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "employees",
+                "employee_updates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "<date>"
+                },
+                {
+                  "key": "to",
+                  "value": "<date>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "2ab25e7d-1879-4ecc-a518-013d90f8f94f",
+      "name": "List documents",
+      "request": {
+        "name": "List documents",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "documents",
+            "documents"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3604e146-147a-49e2-bafd-ec0e1e7b0b0d",
+          "name": "Documents",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "documents",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "1b7942a7-b778-4e44-bc1c-eeb6e64cf73c",
+      "name": "Upload a document",
+      "request": {
+        "name": "Upload a document",
+        "description": {},
+        "url": {
+          "path": [
+            "resources",
+            "documents",
+            "documents"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "description": ""
+            },
+            {
+              "key": "employee_id",
+              "value": "<integer>",
+              "type": "text",
+              "description": ""
+            },
+            {
+              "key": "folder_id",
+              "value": "<integer>",
+              "type": "text",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "54dcd1c7-6237-4696-8e5c-0dabef35bd38",
+          "name": "Document uploaded",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "resources",
+                "documents",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "file",
+                  "value": "<binary>",
+                  "type": "text"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "employee_id",
+                  "value": "<integer>",
+                  "type": "text"
+                },
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "key": "folder_id",
+                  "value": "<integer>",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.factorialhr.com/api/2026-04-01",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5c4511ee-055f-487a-8d27-89ece8db3196",
+    "name": "Factorial Developer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Versioned REST API for Factorial HRIS. Path prefix includes a date\nversion (e.g. /api/2026-04-01/resources). Common HR resources\ninclude employees, contracts, compensations, shifts, attendance,\novertime, leaves/time off, locations, payroll, documents, custom\nfields, expenses, projects, and performance. Authentication\nsupports API keys (Bearer tokens) and OAuth 2.0 via the Factorial\ndeveloper portal.\n\n\nContact Support:\n Name: Factorial API Docs",
+      "type": "text/plain"
+    }
+  }
+}

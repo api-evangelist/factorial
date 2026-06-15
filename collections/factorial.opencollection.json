@@ -1,0 +1,567 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Factorial Developer API",
+    "version": "2026-04-01"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "List employees",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/employees/employees",
+        "params": [
+          {
+            "name": "page",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "per_page",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List employees"
+    },
+    {
+      "info": {
+        "name": "Create an employee",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/employees/employees",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create an employee"
+    },
+    {
+      "info": {
+        "name": "Get an employee",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/employees/employees/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get an employee"
+    },
+    {
+      "info": {
+        "name": "Update an employee",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/employees/employees/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update an employee"
+    },
+    {
+      "info": {
+        "name": "Invite an employee to Factorial",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/employees/employees/:id/invite",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Invite an employee to Factorial"
+    },
+    {
+      "info": {
+        "name": "Terminate an employee",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/employees/employees/:id/terminate",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Terminate an employee"
+    },
+    {
+      "info": {
+        "name": "List contract versions",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/contracts/contract_versions"
+      },
+      "docs": "List contract versions"
+    },
+    {
+      "info": {
+        "name": "Create a contract version",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/contracts/contract_versions",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a contract version"
+    },
+    {
+      "info": {
+        "name": "Get a contract version",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/contracts/contract_versions/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a contract version"
+    },
+    {
+      "info": {
+        "name": "Update a contract version",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/contracts/contract_versions/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update a contract version"
+    },
+    {
+      "info": {
+        "name": "Delete a contract version",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/contracts/contract_versions/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete a contract version"
+    },
+    {
+      "info": {
+        "name": "List attendance shifts",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/attendance/shifts",
+        "params": [
+          {
+            "name": "employee_id",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "start_on",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "end_on",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List attendance shifts"
+    },
+    {
+      "info": {
+        "name": "Create an attendance shift (clock in)",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/attendance/shifts",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create an attendance shift (clock in)"
+    },
+    {
+      "info": {
+        "name": "Get an attendance shift",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/attendance/shifts/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get an attendance shift"
+    },
+    {
+      "info": {
+        "name": "Update an attendance shift",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/attendance/shifts/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update an attendance shift"
+    },
+    {
+      "info": {
+        "name": "Delete an attendance shift",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/attendance/shifts/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete an attendance shift"
+    },
+    {
+      "info": {
+        "name": "Clock in",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/attendance/shifts/clock_in",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Clock in"
+    },
+    {
+      "info": {
+        "name": "Clock out",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/attendance/shifts/clock_out",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Clock out"
+    },
+    {
+      "info": {
+        "name": "List leaves / time off requests",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/time_off/leaves",
+        "params": [
+          {
+            "name": "employee_id",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "from",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "to",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List leaves / time off requests"
+    },
+    {
+      "info": {
+        "name": "Create a leave / time off request",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/time_off/leaves",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a leave / time off request"
+    },
+    {
+      "info": {
+        "name": "Get a leave",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/time_off/leaves/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Get a leave"
+    },
+    {
+      "info": {
+        "name": "Update a leave",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/time_off/leaves/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update a leave"
+    },
+    {
+      "info": {
+        "name": "Delete a leave",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/time_off/leaves/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete a leave"
+    },
+    {
+      "info": {
+        "name": "List payroll supplements",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/payroll/supplements"
+      },
+      "docs": "List payroll supplements"
+    },
+    {
+      "info": {
+        "name": "Create a payroll supplement",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/payroll/supplements",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a payroll supplement"
+    },
+    {
+      "info": {
+        "name": "List company locations",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/companies/locations"
+      },
+      "docs": "List company locations"
+    },
+    {
+      "info": {
+        "name": "Create a company location",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/companies/locations",
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create a company location"
+    },
+    {
+      "info": {
+        "name": "List employee updates (new hires, terminations, contract changes, absences)",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/employees/employee_updates",
+        "params": [
+          {
+            "name": "from",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "to",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "List employee updates (new hires, terminations, contract changes, absences)"
+    },
+    {
+      "info": {
+        "name": "List documents",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/documents/documents"
+      },
+      "docs": "List documents"
+    },
+    {
+      "info": {
+        "name": "Upload a document",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.factorialhr.com/api/2026-04-01/resources/documents/documents",
+        "body": {
+          "type": "multipart-form",
+          "data": [
+            {
+              "name": "file",
+              "type": "text",
+              "value": ""
+            },
+            {
+              "name": "employee_id",
+              "type": "text",
+              "value": ""
+            },
+            {
+              "name": "folder_id",
+              "type": "text",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "docs": "Upload a document"
+    }
+  ],
+  "bundled": true
+}
