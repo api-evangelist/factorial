@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/factorial-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: ApiKey
+  type: http
+  scheme: bearer
+  description: API key issued from the Factorial settings panel.
+  sources:
+  - openapi/factorial-openapi.yml
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.factorialhr.com/oauth/authorize
+    tokenUrl: https://api.factorialhr.com/oauth/token
+    scopes: 2
+  sources:
+  - openapi/factorial-openapi.yml
