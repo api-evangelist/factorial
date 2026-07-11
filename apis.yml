@@ -51,6 +51,8 @@ apis:
         url: https://apidoc.factorialhr.com/docs/production-and-demo
 
 common:
+  - type: OAuthScopes
+    url: scopes/factorial-scopes.yml
   - type: Arazzo
     url: arazzo/factorial-add-payroll-supplement-workflow.yml
     name: Factorial Add Payroll Supplement
@@ -103,6 +105,8 @@ common:
     url: https://www.linkedin.com/company/factorial-hr
   - type: LlmsText
     url: https://factorialhr.com/llms.txt
+  - url: https://factorialhr.com/blog/feed
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
