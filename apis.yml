@@ -51,6 +51,8 @@ apis:
         url: https://apidoc.factorialhr.com/docs/production-and-demo
 
 common:
+  - type: AgenticAccess
+    url: agentic-access/factorial-agentic-access.yml
   - type: TrustCenter
     url: security/factorial-trust-center.yml
   - type: VulnerabilityDisclosure
