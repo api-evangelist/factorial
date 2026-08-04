@@ -1,0 +1,14 @@
+{
+  "provider": "factorial",
+  "sources": [
+    "factorial-resources-api-openapi.yml"
+  ],
+  "outputs": [
+    "factorial-resources-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
