@@ -1,0 +1,24 @@
+# Factorial Business Management
+
+> Factorial is a global all-in-one business management platform designed to streamline operations for small and medium enterprises. It centralizes human capital, financial expenses, and operational workflows to drive data-driven growth across all international markets.
+
+## Primary Resources
+- [Full Documentation](https://factorialhr.com/llms-full.txt): A comprehensive single file containing complete technical and product documentation for all business modules in this market domain.
+
+## Business Operations & Strategy
+- [Organizational Management](https://factorialhr.com/organizational-chart-maker-online): Tools for structuring global entities, managing permissions, and organizational scaling.
+- [Time & Productivity](https://factorialhr.com/time-attendance-signing): Global resource allocation, shift planning, and attendance tracking operations.
+- [Talent Acquisition](https://factorialhr.com/applicant-tracking-system): Strategic recruitment and applicant tracking workflows with multi-language support.
+
+## Financial & Legal Management
+- [Expenses & Finance](https://factorialhr.com/expense-management-software): Integrated business expense management, company cards, and budget tracking.
+- [Global Payroll & Tax](https://factorialhr.com/payroll): Payroll workflows localized for different tax systems and legal requirements.
+- [Compliance & Security](https://factorialhr.com/security): Documentation on labor compliance, data privacy, and platform security controls.
+
+## Developer & API
+- [API Reference](https://factorialhr.com/integrations): The primary integration point for syncing Factorial business data with external systems.
+- [Webhooks Guide](https://factorialhr.com/integrations): Real-time event notifications for operational and financial data changes.
+
+## Optional
+- [Help Center](https://help.factorialhr.com): Multi-language support for administrators and operational teams.
+- [Business & HR Blog](https://factorialhr.com/blog): Insights on global business management trends and execution.
